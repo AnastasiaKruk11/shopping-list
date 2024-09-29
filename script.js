@@ -7,8 +7,11 @@ saveInput.addEventListener('keydown', function(event) {
         const itemText = saveInput.value;
 
         const newItem = document.createElement('div');
-        newItem.classList.add('newItem');
         newItem.textContent = itemText;
+
+        newItem.addEventListener('click', function() {
+            newItem.classList.toggle('done');
+        })
 
         if (itemText != '') {
             groceriesItems.append(newItem);
@@ -17,13 +20,6 @@ saveInput.addEventListener('keydown', function(event) {
         saveInput.value = '';
     }
 
-    const savedItems = document.querySelectorAll('.newItem');
-
-    for (let savedItem of savedItems) {
-        savedItem.addEventListener('click', function() {
-            savedItem.classList.toggle('done');
-        })
-    }
 })
 
 /* Пустые элементы не должны добавляться */
